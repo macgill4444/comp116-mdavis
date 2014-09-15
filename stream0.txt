@@ -1,0 +1,44 @@
+220 (vsFTPd 3.0.2)
+USER ihackpineapples
+331 Please specify the password.
+PASS rockyou1
+230 Login successful.
+SYST
+215 UNIX Type: L8
+FEAT
+211-Features:
+ EPRT
+ EPSV
+ MDTM
+ PASV
+ REST STREAM
+ SIZE
+ TVFS
+ UTF8
+211 End
+PWD
+257 "/home/ihackpineapples"
+TYPE I
+200 Switching to Binary mode.
+EPSV
+229 Entering Extended Passive Mode (|||41048|).
+STOR BjN-O1hCAAAZbiq.jpg
+150 Ok to send data.
+226 Transfer complete.
+EPSV
+229 Entering Extended Passive Mode (|||49231|).
+STOR BvgT9p2IQAEEoHu.jpg
+150 Ok to send data.
+226 Transfer complete.
+EPSV
+229 Entering Extended Passive Mode (|||42905|).
+STOR BvzjaN-IQAA3XG7.jpg
+150 Ok to send data.
+226 Transfer complete.
+EPSV
+229 Entering Extended Passive Mode (|||47343|).
+STOR smash.txt
+150 Ok to send data.
+226 Transfer complete.
+QUIT
+221 Goodbye.
