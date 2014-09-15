@@ -40,19 +40,31 @@ Monday September 16, 2014
 	77882
 
 11. How many plaintext username-password pairs are there in this packet set?
-	1	
+	9
+	(1. cisco 185 august23
+	 2. cisco 185 anthony7
+	 3. cisco 185 allahu
+	 4. cisco 185 alannah
+	 5. cisco 185 BASKETBALL
+	 6. cisco 185 12345d
+	 7. cisco 185 122333
+	 8. cisco 184 yomama1
+	 9. chris@digitalinterlude.com Volrathw69) 	
 
 12. Briefly describe how you found the username-password pairs.
 	tcp contains User
-	tcp contains Pass
-	
+	tcp contains Pass	
+	telnet contains User	
 
 13. For each of the plaintext username-password pair that you found, identify the protocol used, server IP, the corresponding domain name (e.g., google.com), and port number.
-	POP, 75.126.75.131, port number is 110
+	POP3, 75.126.75.131, port number is 110
+	TELNET, 10.156.15.241, port number is 23,	
 
-IMPORTANT NOTE: PLEASE DO NOT LOG ON TO THE WEBSITE OR SERVICE ASSOCIATED WITH THE USERNAME-PASSWORD THAT YOU FOUND!
+
 
 14. Of all the plaintext username-password pairs that you found, how many of them are legitimate? That is, the username-password was valid, access successfully granted?
+	1 is valid. 
+
 
 15. How did you verify the successful username-password pairs?
 
