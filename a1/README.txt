@@ -35,3 +35,47 @@ Monday September 16, 2014
 
 9. Extract all the files that were transferred from PC to server. These files must be part of your submission
 
+-------------------------------------------------------------
+10. How many packets are there in this set?
+	77882
+
+11. How many plaintext username-password pairs are there in this packet set?
+	1	
+
+12. Briefly describe how you found the username-password pairs.
+	tcp contains User
+	tcp contains Pass
+	
+
+13. For each of the plaintext username-password pair that you found, identify the protocol used, server IP, the corresponding domain name (e.g., google.com), and port number.
+	POP, 75.126.75.131, port number is 110
+
+IMPORTANT NOTE: PLEASE DO NOT LOG ON TO THE WEBSITE OR SERVICE ASSOCIATED WITH THE USERNAME-PASSWORD THAT YOU FOUND!
+
+14. Of all the plaintext username-password pairs that you found, how many of them are legitimate? That is, the username-password was valid, access successfully granted?
+
+15. How did you verify the successful username-password pairs?
+
+16. What advice would you give to the owners of the username-password pairs that you found so their account information would not be revealed "in-the-clear" in the future?
+	Do not use insecure protocols like POP3 or HTTP or FTP. Make sure all your data is secure by using encryption like HTTPS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
