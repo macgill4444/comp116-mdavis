@@ -57,7 +57,7 @@ Monday September 16, 2014
 	telnet contains User	
 
 13. For each of the plaintext username-password pair that you found, identify the protocol used, server IP, the corresponding domain name (e.g., google.com), and port number.
-	POP3, 75.126.75.131, port number is 110
+	POP3, 75.126.75.131, @mail.si-sv3231.com, port number is 110
 	TELNET, 10.156.15.241, port number is 23,	
 
 
