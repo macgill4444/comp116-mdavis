@@ -1,5 +1,5 @@
 Macgill Davis
-Comp116 Ming
+Comp116 Ming - HW1
 Monday September 16, 2014
 
 
@@ -40,7 +40,7 @@ Monday September 16, 2014
 	77882
 
 11. How many plaintext username-password pairs are there in this packet set?
-	9
+	9 files
 	(1. cisco 185 august23
 	 2. cisco 185 anthony7
 	 3. cisco 185 allahu
@@ -58,18 +58,20 @@ Monday September 16, 2014
 
 13. For each of the plaintext username-password pair that you found, identify the protocol used, server IP, the corresponding domain name (e.g., google.com), and port number.
 	POP3, 75.126.75.131, @mail.si-sv3231.com, port number is 110
-	TELNET, 10.156.15.241, port number is 23,	
-
-
+	TELNET, 10.156.15.241, port number is 23, I could not find a 
+	corresponding domain name for this ip address	
 
 14. Of all the plaintext username-password pairs that you found, how many of them are legitimate? That is, the username-password was valid, access successfully granted?
-	1 is valid. 
-
+	1 is valid
 
 15. How did you verify the successful username-password pairs?
+	In the tcp stream you can see that the user gains access because it 
+	says "+OK Password ok". For all the other passwords used with the 
+	username 'cisco' it says login failed.	
 
 16. What advice would you give to the owners of the username-password pairs that you found so their account information would not be revealed "in-the-clear" in the future?
-	Do not use insecure protocols like POP3 or HTTP or FTP. Make sure all your data is secure by using encryption like HTTPS.
+	Do not use insecure protocols like POP3 or HTTP or FTP. Make sure all 
+	your data is secure by using encryption like HTTPS.
 
 
 
