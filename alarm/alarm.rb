@@ -6,15 +6,19 @@ $incidence_number = 0
 $ip_protocol = -1
 $src_ip = -1
 $payloadz = -1
- 
-def main
-	packets = PacketFu::Capture.new(:start => true, :iface =>'eth0', :promisc => true, :filter => "tcp")
 
+puts "working"
+ 
+def live_stream
+	packets = PacketFu::Capture.new(:start => true, :iface =>'eth0', :promisc => true, :filter => "tcp")
+		
+	puts "starting"
+	
 	caught = false
 	while caught == false do 
 		packets.stream.each do |p|
 			pkt = PacketFu::Packet.parse(p)
-			puts pkt.proto
+			#puts pkt.proto
 			#puts pkt.inspect()		
 			
 			flags_sum = 0
@@ -31,7 +35,7 @@ def main
 					
 			#destinatino port for TCP, 80 is http
 			puts pkt.tcp_dst
-			puts "Destinatino port is above me..."
+			#puts "Destinatino port is above me..."
 				
 			#if flag sum is 6, all flags on and xmas	
 			if flags_sum == 6
@@ -42,8 +46,10 @@ def main
 				$incidence_number += 1
 				print_alert("Null attack ")
 			else 
-				#puts "FLAGS SUM IS #{flags_sum}"
-				puts "++++++++++++++++++++++++++++++++++++++++"
+				if pkt.tcp_dst == 80 
+					#puts "is a http req"
+					ccard_check		
+				end		
 			end
 		end
 
@@ -57,7 +63,15 @@ def print_alert(attack)
 	puts "#{$incidence_number}. ALERT #{attack} is detected" 
 end
 
-main
+def ccard_check
+	#pl_ouput = Base64.encode64($payloadz)
+	#puts pl_ouput
+	puts $payloadz
+end
+
+
+
+live_stream
 
 
 
