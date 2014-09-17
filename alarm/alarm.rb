@@ -1,3 +1,5 @@
+#notes: can there be xmas and null with anything but a tcp? How do we do credit car example? Are we suppose to be able to parse through a file?
+
 require 'packetfu'
 
 $incidence_number = 0
@@ -26,7 +28,10 @@ def main
 			#puts "Source IP is  #{$src_ip}"
 			#puts "IP protocol is #{$ip_protocol}"
 			#puts "PAYLOAD IS         #{$payloadz}"	
-			
+					
+			#destinatino port for TCP, 80 is http
+			puts pkt.tcp_dst
+			puts "Destinatino port is above me..."
 				
 			#if flag sum is 6, all flags on and xmas	
 			if flags_sum == 6
