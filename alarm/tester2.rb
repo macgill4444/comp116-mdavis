@@ -1,5 +1,3 @@
-#notes: can there be xmas and null with anything but a tcp? How do we do credit car example? Are we suppose to be able to parse through a file?
-
 require 'packetfu'
 
 $incidence_number = 0
@@ -13,10 +11,11 @@ def main
 	caught = false
 	while caught == false do 
 		packets.stream.each do |p|
-			pkt = PacketFu::Packet.parse(p)
-			puts pkt.proto
+			pkt  = PacketFu::Packet.parse(p)
 			#puts pkt.inspect()		
 			
+			#puts pkt.kind_of?("tcp")
+
 			flags_sum = 0
 			pkt.tcp_flags.each do |f| 
 				flags_sum += f
@@ -25,21 +24,18 @@ def main
 			$src_ip = pkt.ip_src_readable
 			$ip_protocol = pkt.ip_proto
 			$payloadz = pkt.payload() 
-			#puts "Source IP is  #{$src_ip}"
-			#puts "IP protocol is #{$ip_protocol}"
-			#puts "PAYLOAD IS         #{$payloadz}"	
-					
-			#destinatino port for TCP, 80 is http
-			puts pkt.tcp_dst
-			puts "Destinatino port is above me..."
+			puts "Source IP is  #{$src_ip}"
+			puts "IP protocol is #{$ip_protocol}"
+			puts "PAYLOAD IS         #{$payloadz}"	
+			
 				
 			#if flag sum is 6, all flags on and xmas	
 			if flags_sum == 6
-				print_alert("Xmas attack")
-				$incidence_number += 1			
+				puts "Xmas attack"
+				print_alert("Xmas attack ")				
 			#if flag sum is 0 no flags on so null	
 			elsif flags_sum == 0
-				$incidence_number += 1
+				puts "Null alert"
 				print_alert("Null attack ")
 			else 
 				#puts "FLAGS SUM IS #{flags_sum}"
@@ -55,6 +51,7 @@ end
 
 def print_alert(attack)
 	puts "#{$incidence_number}. ALERT #{attack} is detected" 
+
 end
 
 main
