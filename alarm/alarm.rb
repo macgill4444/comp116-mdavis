@@ -22,11 +22,11 @@ def web_log(_log)
 	infile = File.open(_log, "r")
 	while (word = infile.gets)
 		if word =~ /4[0-9][0-9]/
-			#parse_line(word, "HTTP 404 Error found")	
+			parse_line(word, "HTTP 404 Error found")	
 			$s404s += 1
 		end
 		if word =~ /[n|N][m|M][a|A][p|P]/ 
-			#parse_line(word, "nmap found")
+			parse_line(word, "nmap found")
 			$nmaps += 1
 		end
 		if word =~ /x[0-9|a-f|A-F][0-9|a-f|A-F]{3,}/
@@ -38,11 +38,9 @@ def web_log(_log)
 	end
 end
 
-def parse_line(word, alert_ty)
-	
+def parse_line(word, alert_ty)	
 	$src_ip = word.scan(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/)
 	$payloadz = word.scan(/".*\n/)
-		#word.scan(/(["'])(?:(?=(\\?))\2.)*?\1/)
 	$incidence_number += 1
 	print_alert(alert_ty,"HTTP")
 end
