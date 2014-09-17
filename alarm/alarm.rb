@@ -40,10 +40,9 @@ end
 
 def parse_line(word, alert_ty)
 	
-	#puts word
-	#puts "************************************************************"
 	$src_ip = word.scan(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/)
-	$payloadz = word.scan(/(["'])(?:(?=(\\?))\2.)*?\1/)
+	$payloadz = word.scan(/".*\n/)
+		#word.scan(/(["'])(?:(?=(\\?))\2.)*?\1/)
 	$incidence_number += 1
 	print_alert(alert_ty,"HTTP")
 end
