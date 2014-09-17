@@ -7,13 +7,12 @@ $ip_protocol = -1
 $src_ip = -1
 $payloadz = -1
 
-puts "working"
  
 def live_stream
 	packets = PacketFu::Capture.new(:start => true, :iface =>'eth0', :promisc => true, :filter => "tcp")
 		
 	puts "starting"
-	tester
+	
 	caught = false
 	while caught == false do 
 		packets.stream.each do |p|
@@ -34,7 +33,7 @@ def live_stream
 			#puts "PAYLOAD IS         #{$payloadz}"	
 					
 			#destinatino port for TCP, 80 is http
-			puts pkt.tcp_dst
+			#puts pkt.tcp_dst
 			#puts "Destinatino port is above me..."
 				
 			#if flag sum is 6, all flags on and xmas	
@@ -58,23 +57,8 @@ def live_stream
 end
 
 
-
 def print_alert(attack)
 	puts "#{$incidence_number}. ALERT #{attack} is detected" 
-end
-
-def ccard_check
-	#pl_ouput = Base64.encode64($payloadz)
-	#puts pl_ouput
-	if payloadz =~ "5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}"
-		puts "Mastercard"
-	end
-	if $payloadz =~ "6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}"
-		puts "Discovery"
-	end
-	if $payloadz =~ "3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}"
-		puts "Amex"
-	end
 end
 
 def ccard_check 
@@ -85,9 +69,11 @@ def ccard_check
 		puts "Amex detected"
 	elsif /5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/.match($payloadz)
 		puts "Mastercard detected"
-	else /"GET"/.match($payloadz)
-		puts "WE GOTTA GET HERE WE GOT A GET!"
+	elsif /7/.match($payloadz)
+		puts "***********************WE GOTTA GET HERE WE GOT A GET! ********************"
 	end
+	#clear payloadz
+	$payloadz = "empty payload"
 end
 
 
