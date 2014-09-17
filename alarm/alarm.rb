@@ -13,7 +13,7 @@ def live_stream
 	packets = PacketFu::Capture.new(:start => true, :iface =>'eth0', :promisc => true, :filter => "tcp")
 		
 	puts "starting"
-	
+	tester
 	caught = false
 	while caught == false do 
 		packets.stream.each do |p|
@@ -66,9 +66,29 @@ end
 def ccard_check
 	#pl_ouput = Base64.encode64($payloadz)
 	#puts pl_ouput
-	puts $payloadz
+	if payloadz =~ "5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}"
+		puts "Mastercard"
+	end
+	if $payloadz =~ "6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}"
+		puts "Discovery"
+	end
+	if $payloadz =~ "3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}"
+		puts "Amex"
+	end
 end
 
+def ccard_check 
+	#somethin = '6011asdfasdfasdfsdf6011-1234-1234-1234asdfasdfsdfasdfas'
+	if /6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/.match($payloadz)
+		puts "Discovery card detected"
+	elsif /3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}/.match($payloadz)
+		puts "Amex detected"
+	elsif /5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/.match($payloadz)
+		puts "Mastercard detected"
+	else /"GET"/.match($payloadz)
+		puts "WE GOTTA GET HERE WE GOT A GET!"
+	end
+end
 
 
 live_stream
