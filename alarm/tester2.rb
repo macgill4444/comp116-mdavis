@@ -14,6 +14,8 @@ def main
 			pkt  = PacketFu::Packet.parse(p)
 			#puts pkt.inspect()		
 			
+			#puts pkt.kind_of?("tcp")
+
 			flags_sum = 0
 			pkt.tcp_flags.each do |f| 
 				flags_sum += f
