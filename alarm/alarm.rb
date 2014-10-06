@@ -56,21 +56,26 @@ def live_stream
 
 end
 
+#{incident_number}. ALERT: #{attack} is detected from #{source IP address} (#{protocol}) (#{payload})!
+
 
 def print_alert(attack)
-	puts "#{$incidence_number}. ALERT #{attack} is detected" 
+	puts "#{$incidence_number}. ALERT #{attack} is detected from #{$src_ip} (#{$ip_protocol}) (#{$payloadz}" 
 end
 
+
+
+
 def ccard_check 
-	#somethin = '6011asdfasdfasdfsdf6011-1234-1234-1234asdfasdfsdfasdfas'
 	if /6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/.match($payloadz)
-		puts "Discovery card detected"
+		$incidence_number += 1
+		print_alert("Discoverty Credit Card")
 	elsif /3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}/.match($payloadz)
+		$incidence_number += 1
 		puts "Amex detected"
 	elsif /5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/.match($payloadz)
+		$incidence_number += 1
 		puts "Mastercard detected"
-	elsif /7/.match($payloadz)
-		puts "***********************WE GOTTA GET HERE WE GOT A GET! ********************"
 	end
 	#clear payloadz
 	$payloadz = "empty payload"
