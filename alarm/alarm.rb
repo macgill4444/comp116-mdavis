@@ -48,7 +48,7 @@ end
 
  
 def live_stream
-	packets = PacketFu::Capture.new(:start => true, :iface =>'eth0', :promisc => true, :filter => "tcp")
+	packets = PacketFu::Capture.new(:start => true, :iface =>'en1', :promisc => true, :filter => "tcp")
 		
 	caught = false
 	while caught == false do 
