@@ -36,7 +36,7 @@ def test_null_xmas
 end
 
 
-
+#******************************************************************************
 
 $incidence_number = 0
 $ip_protocol = -1
@@ -52,24 +52,24 @@ SYN = 2
 FIN = 1
 
 #totals for nmaps and shells
-$s404s = 0
-$nmaps = 0
-$shells = 0
+#$s404s = 0
+#$nmaps = 0
+#$shells = 0
 
 def web_log(_log)
 	infile = File.open(_log, "r")
 	while (word = infile.gets)
 		if word =~ /4[0-9][0-9]/
 			parse_line(word, "HTTP 4** Error found")	
-			$s404s += 1
+			#$s404s += 1
 		end
 		if word =~ /[n|N][m|M][a|A][p|P]/ 
 			parse_line(word, "nmap found")
-			$nmaps += 1
+			#$nmaps += 1
 		end
 		#used 3 in a row, not sure if that is too many or not enough
 		if word =~ /\\x[0-9|a-f|A-F][0-9|a-f|A-F]([0-9|a-f|A-F])?(\\)?/
-			$shells += 1
+			#$shells += 1
 			parse_line(word, "Shellcode found")
 		end	
 		

@@ -1,6 +1,8 @@
 Macgill Davis
 
-1. I believe that everything has been implemented correctly. However, when Aansh Kapadia and I null scanned and Xmas scanned each other using nmap our alarms did not work. However I built a null and xmas tree TCP packet and my program worked. For some reason the nmap was not Xmas or Null scanning correctly. When we printed out the flags from the null and xmas scans the flags were not set accordingly. I wrote a test program that shows that the null and xmas technique works correctly. It is commented out right now but if you uncomment you it in main it will run.
+1. I believe that everything has been implemented correctly. However, when Aansh Kapadia and I null scanned and Xmas scanned each other using nmap our alarms did not work. However I built a null and xmas tree TCP packet and my program worked. For some reason the nmap was not Xmas or Null scanning correctly. When we printed out the flags from the null and xmas scans the flags were not set accordingly. I wrote a test program that shows that the null and xmas technique works correctly. It is commented out right now but if you uncomment you it in main it will run. 
+
+For the shellcode, I pattern matched for any '\x' followed by either two or three hex digits and maybe another '\\'. Also any web log data with an HTTP error and nmap will sound the alarm twice. 
 
 2. Aansh Kapadia
 
