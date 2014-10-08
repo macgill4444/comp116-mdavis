@@ -11,6 +11,6 @@ For the shellcode, I pattern matched for any '\x' followed by either two or thre
 
 QUESTIONS
 
-1. These heuristics are not that good because they are going to lead to a lot of false positives. When running the live_stream of the alarm, you see that a lot of packet data sets of the credit card alarm. Similarly when looking for shellcode the alarm will sound for a lot of data that is not actually shellcode.
+1. These heuristics are not that good because they are going to lead to a lot of false positives. When running the live_stream of the alarm, you see that a lot of packet data sets off the credit card alarm. Similarly when looking for shellcode the alarm will sound for a lot of data that is not actually shellcode. Although I admittedly thought it better to be safe rather than sorry.
 
-2. I might add scanning the paylod for key words like "credit" "card" "money." I think that it might be helpful to give a 'score' to certain packets. For example, if a packet has credit card numbers and has the word "credit" in the payload, that would have a high score. But if the packet has the credit card numbers only, with no '-' in between that would be a lower score although still set off the alarm. 
+2. I might add scanning the paylod for key words like "credit" "card" "money." I think that it might be helpful to give a 'score' to certain packets. For example, if a packet has credit card numbers and has the word "credit" in the payload, that would have a high score. But if the packet has the credit card numbers only, with no '-' in between that would be a lower score although still set off the alarm. This could help distinguish between the alarm sounding and help better sort through the data. 
