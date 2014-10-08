@@ -67,8 +67,8 @@ def web_log(_log)
 			parse_line(word, "nmap found")
 			#$nmaps += 1
 		end
-		#used 3 in a row, not sure if that is too many or not enough
-		if word =~ /\\x[0-9|a-f|A-F][0-9|a-f|A-F]([0-9|a-f|A-F])?(\\)?/
+		#patterns for \x hex hex (hex)? (hex)? (hex)? \
+		if word =~ /\\x[0-9|a-f|A-F][0-9|a-f|A-F]([0-9|a-f|A-F])?([0-9|a-f|A-F])?([0-9|a-f|A-F])?\\/
 			#$shells += 1
 			parse_line(word, "Shellcode found")
 		end	
@@ -103,10 +103,10 @@ def live_stream
 
 			if flags_sum == (URG + PSH + FIN) 
 				$incidence_number += 1			
-				print_alert("Xmas attack", "TCP")
+				print_alert("Xmas attack", "HTTP")
 			elsif flags_sum == 0
 				$incidence_number += 1
-				print_alert("Null attack", "TCP")
+				print_alert("Null attack", "HTTP")
 			else 
 				if pkt.tcp_dst == 80 
 					ccard_check		
@@ -131,13 +131,13 @@ end
 def ccard_check 
 	if $payloadz =~ /6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/
 		$incidence_number += 1
-		print_alert("Discoverty Credit Card", "TCP")
+		print_alert("Discoverty Credit Card", "HTTP")
 	elsif $payloadz =~ /3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}/
 		$incidence_number += 1
-		print_alert("Amex Credit Card", "TCP")
+		print_alert("Amex Credit Card", "HTTP")
 	elsif $payload =~ /5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/
 		$incidence_number += 1
-		print_alert("Master Credit Card", "TCP")	
+		print_alert("Master Credit Card", "HTTP")	
 	end
 end
 
